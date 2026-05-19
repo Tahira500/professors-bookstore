@@ -34,7 +34,8 @@ export default function AdminBookForm({ book, onSave, onClose }) {
     setUploading(true)
     const formData = new FormData()
     formData.append('image', imageFile)
-    const res = await fetch('/api/upload/cover', { method: 'POST', body: formData })
+    const apiUrl = import.meta.env.VITE_API_URL || ''
+    const res = await fetch(`${apiUrl}/api/upload/cover`, { method: 'POST', body: formData })
     const json = await res.json()
     setUploading(false)
     if (!json.success) throw new Error('Image upload failed: ' + json.error)

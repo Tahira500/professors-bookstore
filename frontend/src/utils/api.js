@@ -1,4 +1,5 @@
-const BASE = '/api/books'
+const BASE_URL = import.meta.env.VITE_API_URL || ''
+const BASE = `${BASE_URL}/api/books`
 
 export async function fetchBooks(genre = '', search = '') {
   const params = new URLSearchParams()
